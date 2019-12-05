@@ -25,19 +25,21 @@ public class _206_反转链表 {
     }
 
     /**
-     *  使用头插法  ;使用 临时的temp 节点 引用后续节点
+     *  使用头插法;
+     *  目的 吧 1>2>3>4>5 变成 5>4>3>2>1
+     *  但是我们通过 head 只能得到head next
+     *  我们新建一个 newhead 以其为起点不断添加 变成新连表
      * @param head
      * @return
      */
     public ListNode reverseList2(ListNode head) {
-
-        ListNode newNode = null;
-        while (head != null){
-            ListNode tempNode = head.next;
-            head.next = newNode;
-            newNode = head;
-            head = tempNode;
+        ListNode newHead = null;
+        while (head!=null){
+            ListNode tmp = head.next;
+             head.next = newHead;
+             newHead = head;
+             head = tmp;
         }
-        return newNode;
+        return newHead;
     }
 }
